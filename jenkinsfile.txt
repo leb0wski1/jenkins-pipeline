@@ -1,0 +1,46 @@
+pipeline {
+    agent any 
+
+    environment {
+        PROJECT_NAME = "Neptun"
+        OWNER_NAME = "Aleksandr Zaparov"
+    }
+    
+
+    stages {
+        stage('1-Build') {
+            steps {
+                echo 'Start of stage Build'
+                echo 'Building.....'
+                echo 'End of Stage Build'
+            }
+        }
+        stage('1-Tets') {
+            steps {
+                echo 'Start of stage Test'
+                echo 'Testing.....'
+                sh "ls -la"
+                echo "Hello ${OWNER_NAME}"
+                echo "Project name is ${PROJECT_NAME}"
+                echo 'End of Stage Test'
+            }
+        }
+        stage('3-Deploy') {
+            steps {
+                echo 'Start of stage Deploy'
+                echo 'Deploying.....'
+                sh '''
+                    echo "line1"
+                    echo "line2"
+                    '''
+                //sh "python --version"
+                echo 'End of Stage Deploy'
+            }
+        }
+        stage('4-Celebrate') {
+            steps {
+                echo 'CONGRATULYACIYA!'
+            }
+        }
+    }
+}
